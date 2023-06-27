@@ -3,8 +3,8 @@ import Counter from "../components/Counter.tsx";
 import { Button } from "../components/Button.tsx";
 
 export default function Marcador() {
-    const storageNos = Number(window.localStorage.getItem('counterNos'));
-    const storageEles = Number(window.localStorage.getItem('counterEles'));
+    const storageNos = Number(localStorage.getItem('counterNos'));
+    const storageEles = Number(localStorage.getItem('counterEles'));
 
     const [counterNos, setCounterNos] = useState(storageNos);
     const [counterEles, setCounterEles] = useState(storageEles);
@@ -22,8 +22,8 @@ export default function Marcador() {
             alert('Vencedor: Eles');
         }
 
-        window.localStorage.setItem('counterNos', `${counterNos}`);
-        window.localStorage.setItem('counterEles', `${counterEles}`);
+        localStorage.setItem('counterNos', `${counterNos}`);
+        localStorage.setItem('counterEles', `${counterEles}`);
 
         return {nos: counterNos, eles: counterEles};
     }, [counterEles, counterNos]);
