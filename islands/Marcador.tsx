@@ -2,6 +2,9 @@ import { useMemo, useState } from "preact/hooks";
 import Counter from "../components/Counter.tsx";
 import { Button } from "../components/Button.tsx";
 
+import { installGlobals } from "https://deno.land/x/virtualstorage@0.1.0/mod.ts";
+installGlobals();
+
 export default function Marcador() {
     const storageNos = Number(localStorage.getItem('counterNos'));
     const storageEles = Number(localStorage.getItem('counterEles'));
