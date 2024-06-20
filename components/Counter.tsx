@@ -3,7 +3,7 @@ interface CounterProps {
   label: string;
 }
 
-export default function Counter({count, label}: CounterProps) {
+export default function Counter({ count, label }: CounterProps) {
   return (
     <div>
       <h1>{label}</h1>

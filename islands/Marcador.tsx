@@ -6,48 +6,48 @@ import { installGlobals } from "https://deno.land/x/virtualstorage@0.1.0/mod.ts"
 installGlobals();
 
 export default function Marcador() {
-    const storageNos = Number(localStorage.getItem('counterNos'));
-    const storageEles = Number(localStorage.getItem('counterEles'));
+  const storageNos = Number(localStorage.getItem("counterNos"));
+  const storageEles = Number(localStorage.getItem("counterEles"));
 
-    const [counterNos, setCounterNos] = useState(storageNos);
-    const [counterEles, setCounterEles] = useState(storageEles);
+  const [counterNos, setCounterNos] = useState(storageNos);
+  const [counterEles, setCounterEles] = useState(storageEles);
 
-    const values = useMemo(() => {
-        if (counterNos >= 12) {
-            setCounterNos(0);
-            setCounterEles(0);
-            alert('Vencedor: Nós');
-        }
+  const values = useMemo(() => {
+    if (counterNos >= 12) {
+      setCounterNos(0);
+      setCounterEles(0);
+      alert("Vencedor: Nós");
+    }
 
-        if (counterEles >= 12) {
-            setCounterNos(0);
-            setCounterEles(0);
-            alert('Vencedor: Eles');
-        }
+    if (counterEles >= 12) {
+      setCounterNos(0);
+      setCounterEles(0);
+      alert("Vencedor: Eles");
+    }
 
-        localStorage.setItem('counterNos', `${counterNos}`);
-        localStorage.setItem('counterEles', `${counterEles}`);
+    localStorage.setItem("counterNos", `${counterNos}`);
+    localStorage.setItem("counterEles", `${counterEles}`);
 
-        return {nos: counterNos, eles: counterEles};
-    }, [counterEles, counterNos]);
+    return { nos: counterNos, eles: counterEles };
+  }, [counterEles, counterNos]);
 
-    return (
-        <div style="display: flex; flex-direction: row; width: 75%; align-self: center; justify-content: space-around;">
-            <div style="display: flex; flex-direction: column;">
-                <Counter count={values.nos} label="Nos"></Counter>
-                <div>
-                    <Button onClick={() => setCounterNos(counterNos - 1)}>-1</Button>
-                    <Button onClick={() => setCounterNos(counterNos + 1)}>+1</Button>
-                </div>
-            </div>
-
-            <div style="display: flex; flex-direction: column;">
-                <Counter count={values.eles} label="Eles"></Counter>
-                <div>
-                    <Button onClick={() => setCounterEles(counterEles - 1)}>-1</Button>
-                    <Button onClick={() => setCounterEles(counterEles + 1)}>+1</Button>
-                </div>
-            </div>
+  return (
+    <div style="display: flex; flex-direction: row; width: 75%; align-self: center; justify-content: space-around;">
+      <div style="display: flex; flex-direction: column;">
+        <Counter count={values.nos} label="Nos"></Counter>
+        <div>
+          <Button onClick={() => setCounterNos(counterNos - 1)}>-1</Button>
+          <Button onClick={() => setCounterNos(counterNos + 1)}>+1</Button>
         </div>
-    );
+      </div>
+
+      <div style="display: flex; flex-direction: column;">
+        <Counter count={values.eles} label="Eles"></Counter>
+        <div>
+          <Button onClick={() => setCounterEles(counterEles - 1)}>-1</Button>
+          <Button onClick={() => setCounterEles(counterEles + 1)}>+1</Button>
+        </div>
+      </div>
+    </div>
+  );
 }
